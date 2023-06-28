@@ -59,7 +59,7 @@ main{
 }
 
 .servicio{
-    font-family: var(--font2);
+    font-family: var(--font1);
     font-size: 2rem;
     color: var(--color2);
 }
