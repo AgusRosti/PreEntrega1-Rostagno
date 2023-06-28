@@ -58,6 +58,12 @@ main{
     gap: 50px;
 }
 
+.servicio{
+    font-family: var(--font2);
+    font-size: 2rem;
+    color: var(--color2);
+}
+
 .imagenes{
     display: flex;
     gap: 20px;
