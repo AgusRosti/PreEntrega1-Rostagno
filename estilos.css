@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Ranchers&family=Wix+Madefor+Display&display=swap');
+
+:root{
+    --color1: #245a3f;
+    --color2: #B8B42D;
+    --color3: #00250b;
+    --color4: #ebf5cc;
+    --font1: 'Bebas Neue', sans-serif;
+    --font2: 'Wix Madefor Display', sans-serif;
+    --font3: 'Ranchers', cursive;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font2);
+    color: var(--color1);
+}
+
+main{
+    height: 100vh;
+    background-color: var(--color4);
+}
+
+.hero{
+    height: 100vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+}
+
+.logo{
+    width: 250px;
+    filter: drop-shadow(2px 4px 5px #2a2c2b);
+}
+
+.tit,
+.subtit,
+.btn{
+    font-size: 2rem;
+    letter-spacing: 2px;
+}
+
+.tit{
+    font-size: 6rem;
+    letter-spacing: 8px;
+    color: var(--color1);
+    font-family: var(--font1);
+    text-shadow: 2px 4px 5px #2a2c2b;
+}
+
+
+.servicios{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.imagenes{
+    display: flex;
+    gap: 20px;
+}
+
+.img{
+    width: 300px;
+    height: 300px;
+    border-radius: 10px;
+    box-shadow: 2px 4px 5px #2a2c2b;
+}
