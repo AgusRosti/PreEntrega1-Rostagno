@@ -1,48 +1,64 @@
-let tarifaDiaria = 1500;
+let cantidadBanios = 0;
+let validInput = false;
 
-let diasAlquiler;
-while (true) {
-    diasAlquiler = parseInt(prompt("Ingrese la cantidad de días de alquiler:"));
+while (!validInput) {
 
-    if (!isNaN(diasAlquiler) && diasAlquiler > 0) {
-        break;
+    cantidadBanios = parseInt(prompt("¿Cuántos baños desea alquilar?"));
+
+    if (cantidadBanios >= 2 && !isNaN(cantidadBanios)) {
+        validInput = true;
+
+    } else {
+        alert("La cantidad mínima de baños para alquilar es 2. Ingresa un valor válido.");
     }
-
-    alert("Por favor, ingrese un valor numérico válido y mayor a cero.");
 }
 
-let cantidadBanios;
-while (true) {
-    cantidadBanios = parseInt(prompt("Ingrese la cantidad de baños químicos a alquilar:"));
+let dias = parseInt(prompt("¿Por cuántos días desea alquilar los baños químicos?"));
+const PRECIOXDIA = 5000;
+let serviciosMantenimiento = prompt("¿Deseas solicitar servicios de mantenimiento y limpieza? Responde 'si'/'no'.").toLowerCase();
+let pagos = prompt("¿Desea pagar en efectivo? Responde 'si'/'no'.").toLowerCase();
+let tarjetaCuotas = 1;
 
-    if (!isNaN(cantidadBanios) && cantidadBanios > 0) {
-        break;
+let total = 0;
+
+if (dias > 0 && !isNaN(dias)) {
+    if (dias > 5) {
+        total = dias * 3000;
+
+    } else if (dias > 3) {
+        total = dias * 4000;
+
+    } else {
+        total = dias * PRECIOXDIA;
     }
 
-    alert("Por favor, ingrese un valor numérico válido y mayor a cero.");
-}
-
-let totalAlquiler = tarifaDiaria * diasAlquiler * cantidadBanios;
-
-
-function aplicarDescuento(diasAlquiler, totalAlquiler) {
-    if (diasAlquiler >= 7) {
-        totalAlquiler -= 3000; 
-
-    } else if (diasAlquiler >= 3) {
-        totalAlquiler -= 1500; 
+    if (serviciosMantenimiento === 'si') {
+        total += total * 0.1;
     }
-    
-    return totalAlquiler;
+
+    if (cantidadBanios >= 10) {
+        total -= total * 0.1;
+    }
+
+    if (pagos === 'no') {
+        tarjetaCuotas = parseInt(prompt("¿En cuántas cuotas desea pagar? (cantidad máxima de cuotas 6)"));
+
+        if (tarjetaCuotas > 3 && tarjetaCuotas <= 6) {
+            const RECARGO = total * 0.05;
+            total += RECARGO;
+        }
+    }
+
+    let mensaje = "Detalles del presupuesto:\n";
+    mensaje += "Cantidad de baños químicos: " + cantidadBanios + "\n";
+    mensaje += "Duración del alquiler: " + dias + " día(s)\n";
+    mensaje += "Servicios de mantenimiento y limpieza: " + (serviciosMantenimiento === 'si' ? "Sí" : "No") + "\n";
+    mensaje += "Cuotas para el pago con tarjeta: " + tarjetaCuotas + "\n";
+    mensaje += "---------------------------------\n";
+    mensaje += "Total a pagar: $" + total;
+
+    alert(mensaje);
+
+} else {
+    alert("Debes ingresar un número válido de días.");
 }
-
-    totalAlquiler = aplicarDescuento(diasAlquiler, totalAlquiler);
-    console.log("Total a pagar con descuento: $" + totalAlquiler);
-
-
-let mensaje = "Presupuesto de alquiler:\n";
-mensaje += "Días de alquiler: " + diasAlquiler + "\n";
-mensaje += "Cantidad de baños químicos: " + cantidadBanios + "\n";
-mensaje += "Tarifa diaria por baño: $" + tarifaDiaria + "\n";
-mensaje += "Total a pagar: $" + totalAlquiler + "\n";
-alert(mensaje);
